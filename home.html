@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1">
+	<link rel="icon" href="img/favicon.png">
+	<link rel="stylesheet" href="css/shared.css">
+	<link rel="stylesheet" href="css/home.css">
+	<title>Snowprint - Home</title>
+	<div class="snowLayer" id="snowLayer1"></div>
+	<div class="snowLayer" id="snowLayer2"></div>
+	<header>
+		<nav>
+			<p><a href="home.html">Home</a> | <a href="gallery.html">Gallery</a> | <a href="about.html">About</a></p>
+		</nav>
+	</header>
+	<main>
+		<h1>Home</h1>
+		<fieldset>
+			<legend>Snowflake options</legend>
+			<p>
+				<label>Date: <input id="date" type="date"></label>
+			</p>
+			<p>
+				<button id="vary" type="button">Vary</button>
+				<button id="exportSTL" type="button">Export STL</button>
+				<button id="exportPNG" type="button">Export PNG</button>
+			</p>
+			<details id="DIYDetails">
+				<summary>Design-it-yourself</summary>
+				<table>
+					<tr>
+						<td>
+							<label>Pattern
+								<select id="pattern">
+									<option>Linear V
+									<option>Linear X
+									<option>Binary V
+									<option>Binary tree V
+								</select>
+							</label>
+						<td>
+							<label>Shape
+								<select id="shape">
+									<option>Triangle
+									<option>Rectangle
+								</select>
+							</label>
+					<tr>
+						<td>            <label>Curvature    <input id="curvature"   type="range" min="-0.5" max="1"   step="0.0625"></label>
+						<td>            <label>Curve at     <input id="curveAt"     type="range" min="0"    max="1"   step="0.0625"></label>
+					<tr>
+						<td>            <label>Branches     <input id="branches"    type="range" min="1"    max="12"  step="1"></label>
+						<td>            <label>Sub-branches <input id="subbranches" type="range" min="0"    max="8"   step="1"></label>
+					<tr>
+						<td colspan="2"><label>Angle        <input id="angle"       type="range" min="0"    max="175" step="5"></label>
+				</table>
+			</details>
+		</fieldset>
+		<canvas id="canvas" width="350" height="350"></canvas>
+	</main>
+	<script async src="https://unpkg.com/es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "https://unpkg.com/three@0.150.0/build/three.module.js",
+				"STLExporter": "https://unpkg.com/three@0.150.0/examples/jsm/exporters/STLExporter.js",
+				"pen": "./js/pen.js",
+				"prng": "./js/prng.js"
+			}
+		}
+	</script>
+	<script type="module" src="js/home.js"></script>
+</html>

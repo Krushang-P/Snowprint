@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: black; color: white;">
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1">
+	<link rel="icon" href="img/favicon.png">
+	<title>Snowprint - Snow</title>
+	<p>Refresh the page to regenerate the snow.
+	<button id="exportPNG" type="button">Export PNG</button></p>
+	<canvas id="canvas" style="border: solid white 2px;"></canvas>
+	<script>
+		// Return a random integer in the interval [0, max)
+		function randomInteger(max) {
+			return Math.floor(Math.random() * max);
+		}
+
+		let canvas = document.getElementById("canvas");
+		canvas.width = canvas.height = 2048;
+
+		let context = canvas.getContext("2d");
+		context.fillStyle = "white";
+
+		let snowflakeCount = 256;
+		let snowflakeRadii = [2, 3, 5];
+		let maxSnowflakeRadius = Math.max(...snowflakeRadii);
+		let minSnowflakeCoordinate = maxSnowflakeRadius;
+		let maxSnowflakeCoordinate = canvas.width - 2 * maxSnowflakeRadius;
+
+		for (let i = 0; i < snowflakeCount; ++i) {
+			context.beginPath();
+
+			context.arc(
+				minSnowflakeCoordinate + randomInteger(maxSnowflakeCoordinate),
+				minSnowflakeCoordinate + randomInteger(maxSnowflakeCoordinate),
+				snowflakeRadii[randomInteger(snowflakeRadii.length)],
+				0,
+				2 * Math.PI);
+
+			context.fill();
+		}
+
+		let downloader = document.createElement("a");
+		downloader.download = "snow.png";
+
+		document.getElementById("exportPNG").addEventListener("click", (event) => {
+			canvas.toBlob((blob) => {
+				downloader.href = URL.createObjectURL(blob);
+				downloader.click();
+			}, {type: "image/png"});
+		});
+	</script>
+</html>
