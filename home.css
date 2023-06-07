@@ -1,0 +1,8 @@
+#DIYDetails {
+	font-size: smaller;
+}
+
+#DIYDetails input, #DIYDetails select {
+	display: flex;
+	margin: 0.25em auto;
+}

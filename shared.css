@@ -1,0 +1,100 @@
+html {
+	/* This prevents the gradient in body from repeating when body is shorter than the viewport */
+	min-height: 100%;
+}
+
+body {
+	background-image: linear-gradient(#002c40, #004160);
+	color: white;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+header, main {
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	margin-left: auto;
+	margin-right: auto;
+	width: max-content;
+}
+
+main {
+	border-radius: 32px;
+	box-shadow: 0 0 16px 0 black;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	padding: 1em;
+}
+
+fieldset {
+	border-color: white;
+}
+
+fieldset, ul {
+	margin: 1em auto;
+	width: max-content;
+}
+
+li {
+	margin-top: 0.25em;
+}
+
+td {
+	padding: 0.5em;
+}
+
+ul {
+	text-align: initial;
+}
+
+a {
+  color: white;
+  outline-style: none;
+  text-decoration: underline;
+}
+
+a:focus-visible, a:hover {
+  background-color: white;
+  color: black;
+}
+
+.snowLayer {
+	animation-duration: 180s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	background: url("../img/snow.png");
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+#snowLayer1 {
+	animation-name: snowfall1;
+	background-size: 2048px;
+	opacity: 0.75;
+}
+
+#snowLayer2 {
+	animation-name: snowfall2;
+	background-size: 1024px;
+	opacity: 0.5;
+}
+
+@keyframes snowfall1 {
+	100% {
+		/* These lengths must be multiples of background-size
+		or else the background will change suddenly */
+		background-position: 0 2048px;
+	}
+}
+
+@keyframes snowfall2 {
+	100% {
+		/* These lengths must be multiples of background-size
+		or else the background will change suddenly */
+		background-position: 1024px 1024px;
+	}
+}
